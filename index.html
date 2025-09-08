@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Green-Earth</title>
 
     <!-- font integration -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- font awesome cdn -->
     <link
@@ -29,8 +32,8 @@
 
     <!-- stylesheet -->
     <link rel="stylesheet" href="styles/style.css" />
-</head>
-<body class="max-w-[1920px]">
+  </head>
+  <body class="max-w-[1920px]">
     <!-- header section -->
     <header>
       <!-- navbar section -->
@@ -38,14 +41,21 @@
         <div class="flex justify-between items-center w-10/12 mx-auto py-4">
           <div class="flex gap-2 items-center">
             <div class="dropdown dropdown-start lg:hidden">
-              <div tabindex="0" role="button"><i class="fa-solid fa-bars cursor-pointer"></i></div>
-              <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+              <div tabindex="0" role="button">
+                <i class="fa-solid fa-bars cursor-pointer"></i>
+              </div>
+              <ul
+                tabindex="0"
+                class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+              >
                 <li><a href="">About</a></li>
                 <li><a href="">Gallery</a></li>
                 <li><a href="">Plant a Tree</a></li>
               </ul>
             </div>
-            <h2 class="text-xl text-white font-bold"><a href="">Green-Earth</a></h2>
+            <h2 class="text-xl text-white font-bold">
+              <a href="">Green-Earth</a>
+            </h2>
           </div>
 
           <ul class="hidden lg:flex gap-5 text-white">
@@ -54,11 +64,34 @@
             <li><a href="">Plant a Tree</a></li>
           </ul>
 
-          <button class="btn bg-[#FACC15] outline-none border-none rounded-4xl text-[#15803D] text-sm">Plant a Tree</button>
+          <button
+            class="btn bg-[#FACC15] outline-none border-none rounded-4xl text-[#15803D] text-sm"
+          >
+            Plant a Tree
+          </button>
         </div>
       </nav>
 
-      
+      <!-- Banner section -->
+      <section class="bg-[#CFF0DC]">
+        <div class="flex justify-between items-center py-10 px-7 lg:p-0">
+          <img class="hidden lg:flex w-[25%]" src="assets/hero-leaf1.png" alt="" />
+          <div class="text-center">
+            <h2 class="text-2xl lg:text-[50px] text-[#1F2937] font-bold pb-2">Plant a Tree, Grow a Future</h2>
+            <p class="text-[#1F2937] text-sm pb-4">
+              Join our mission to plant 1 million trees and make the Earth greener
+              for future generations.
+            </p>
+            <button
+              class="btn bg-[#FACC15] outline-none border-none rounded-4xl text-[#15803D] text-sm"
+            >
+              Get Involved
+            </button>
+          </div>
+          <img class="hidden lg:flex w-[25%]" src="assets/hero-leaf2.png" alt="">
+        </div>
+        
+      </section>
     </header>
-</body>
+  </body>
 </html>
