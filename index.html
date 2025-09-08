@@ -30,7 +30,35 @@
     <!-- stylesheet -->
     <link rel="stylesheet" href="styles/style.css" />
 </head>
-<body>
-    
+<body class="max-w-[1920px]">
+    <!-- header section -->
+    <header>
+      <!-- navbar section -->
+      <nav class="bg-[#15803D]">
+        <div class="flex justify-between items-center w-10/12 mx-auto py-4">
+          <div class="flex gap-2 items-center">
+            <div class="dropdown dropdown-start lg:hidden">
+              <div tabindex="0" role="button"><i class="fa-solid fa-bars cursor-pointer"></i></div>
+              <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <li><a href="">About</a></li>
+                <li><a href="">Gallery</a></li>
+                <li><a href="">Plant a Tree</a></li>
+              </ul>
+            </div>
+            <h2 class="text-xl text-white font-bold"><a href="">Green-Earth</a></h2>
+          </div>
+
+          <ul class="hidden lg:flex gap-5 text-white">
+            <li><a href="">About</a></li>
+            <li><a href="">Gallery</a></li>
+            <li><a href="">Plant a Tree</a></li>
+          </ul>
+
+          <button class="btn bg-[#FACC15] outline-none border-none rounded-4xl text-[#15803D] text-sm">Plant a Tree</button>
+        </div>
+      </nav>
+
+      
+    </header>
 </body>
 </html>
