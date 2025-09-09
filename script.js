@@ -31,7 +31,7 @@ const displayAllTree = (plants) => {
     plants.forEach(plant => {
         const newTree = document.createElement("div")
         newTree.innerHTML = `
-                <div class="w-[98%] h-full bg-white pt-0.5 pb-4 rounded-lg">
+                <div onclick="loadPlantDetails(${plant.id})" class="w-[98%] h-full bg-white pt-0.5 pb-4 rounded-lg">
                     <div class="w-[90%] h-[170px] mx-auto my-4">
                         <img class="w-full h-full rounded-lg object-cover" src="${plant.image}" alt="" />
                     </div>
@@ -102,4 +102,30 @@ const displayCategoryTree = (categoryTrees) => {
     
 }
 
+
+const loadPlantDetails = (id) => {
+    fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+     .then((res) => res.json())
+     .then((data) => displayPlantDetails(data.plants))
+}
+
+const displayPlantDetails = (plant) => {
+    const detailsContainer = document.getElementById("details-container")
+    detailsContainer.innerHTML = "";
+
+    document.getElementById("plant_modal").showModal()
+    const details = document.createElement("div")
+    details.innerHTML = `
+            <div class="bg-white w-[450px] mx-auto space-y-2">
+              <h2 class="text-lg font-semibold">${plant.name}</h2>
+              <div class="h-[200px]">
+                <img class="w-full h-full rounded-sm object-cover" src="${plant.image}" alt="">
+              </div>
+              <p class="font-bold">Category: <span class="font-normal">${plant.category}</span></p>
+              <p class="font-bold">price: <span class="font-normal">${plant.price}</span></p>
+              <p class="font-bold">Description: <span class="font-normal">${plant.description}</span></p>
+            </div>
+    `
+    detailsContainer.append(details)
+}
 
