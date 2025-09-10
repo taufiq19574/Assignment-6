@@ -21,7 +21,7 @@ const displayTreeCategory = (categories) => {
         const categoriesContainer = document.getElementById("categories-container")
         const categoryName = document.createElement("p")
         categoryName.innerHTML = `
-            <button onclick="categoryTree(${category.id})" class="text-[#1F2937] hover:bg-[#15803D] hover:text-white rounded-sm w-full text-start p-2">${category.category_name}</button>
+            <button id="category-btn-${category.id}" onclick="categoryTree(${category.id})" class="text-[#1F2937] hover:bg-[#15803D] hover:text-white rounded-sm w-full text-start p-2 category-btn">${category.category_name}</button>
         `
         categoriesContainer.append(categoryName)
     })
@@ -32,7 +32,11 @@ loadTreeCategory()
 const loadAllTree = () => {
     fetch("https://openapi.programming-hero.com/api/plants")
         .then((res) => res.json())
-        .then((data) => displayAllTree(data.plants))
+        .then((data) => {
+            removeAllActiveBtn()
+            document.getElementById("all-tree-btn").classList.add("active")
+            displayAllTree(data.plants)
+        })
 }
 
 const displayAllTree = (plants) => {
@@ -73,10 +77,24 @@ const displayAllTree = (plants) => {
 
 loadAllTree()
 
+const removeAllActiveBtn = () => {
+    const activeBtn = document.querySelectorAll(".category-btn")
+    document.getElementById("all-tree-btn").classList.remove("active")
+    activeBtn.forEach(btn => {
+        btn.classList.remove("active")
+    })
+}
+
+
 const categoryTree = (id) => {
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
         .then((res) => res.json())
-        .then((data) => displayCategoryTree(data.plants))
+        .then((data) => {
+            removeAllActiveBtn()
+            const categoryBtn = document.getElementById(`category-btn-${id}`)
+            categoryBtn.classList.add("active")
+            displayCategoryTree(data.plants)
+        })
 }
 
 const displayCategoryTree = (categoryTrees) => {
