@@ -135,12 +135,14 @@ const displayPlantCart = (name, price) => {
 
     const newCart = document.createElement("div")
     newCart.innerHTML = `
-            <div class="flex justify-between items-center bg-[#F0FDF4] p-2">
-                <div>
-                  <h5 class="text-sm text-[#1F2937] font-medium">${name}</h5>
-                  <p class="text-sm text-[#8C8C8C]">৳ ${price}</p>
+            <div id="cart-item">
+                <div class="flex justify-between items-center bg-[#F0FDF4] p-2">
+                    <div>
+                    <h5 class="text-sm text-[#1F2937] font-medium">${name}</h5>
+                    <p class="text-sm text-[#8C8C8C]">৳ ${price}</p>
+                    </div>
+                    <i onclick="removeItem(this)" class="fa-solid fa-xmark cursor-pointer"></i>
                 </div>
-                <i class="fa-solid fa-xmark cursor-pointer"></i>
             </div>
     `
     cartDetailContainer.append(newCart)
@@ -160,3 +162,9 @@ const displayPlantCart = (name, price) => {
     displayTotalPrice.append(totalPrice)
 }
 
+const removeItem = (item) => {
+    const parentItem = item.closest("#cart-item")
+    if(parentItem){
+        parentItem.innerHTML = ""
+    }
+}
