@@ -128,6 +128,8 @@ const displayPlantDetails = (plant) => {
     detailsContainer.append(details)
 }
 
+let sum = 0 ;
+
 const displayPlantCart = (name, price) => {
     const cartDetailContainer = document.getElementById("cart-detail-container")
 
@@ -142,4 +144,19 @@ const displayPlantCart = (name, price) => {
             </div>
     `
     cartDetailContainer.append(newCart)
+
+    const displayTotalPrice = document.getElementById("total-price-count")
+    displayTotalPrice.innerHTML = "";
+
+    sum = sum + parseInt(price)
+
+    const totalPrice = document.createElement("div")
+    totalPrice.innerHTML = `
+            <div class="flex justify-between items-center border-t-2 border-gray-100 mt-2 pt-2">
+                <p>Total:</p>
+                <p>৳ ${sum}</p>
+            </div>
+    `
+    displayTotalPrice.append(totalPrice)
 }
+
