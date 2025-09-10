@@ -31,8 +31,8 @@ const displayAllTree = (plants) => {
     plants.forEach(plant => {
         const newTree = document.createElement("div")
         newTree.innerHTML = `
-                <div onclick="loadPlantDetails(${plant.id})" class="w-[98%] h-full bg-white pt-0.5 pb-4 rounded-lg">
-                    <div class="w-[90%] h-[170px] mx-auto my-4">
+                <div class="w-[98%] h-full bg-white pt-0.5 pb-4 rounded-lg">
+                    <div onclick="loadPlantDetails(${plant.id})" class="w-[90%] h-[170px] mx-auto my-4">
                         <img class="w-full h-full rounded-lg object-cover" src="${plant.image}" alt="" />
                     </div>
                     <div class="px-4">
@@ -50,7 +50,7 @@ const displayAllTree = (plants) => {
                             </button>
                             <p class="text-sm font-semibold"> ৳${plant.price}</p>
                         </div>
-                            <button class="btn btn-wide bg-[#15803D] text-white rounded-[50px]">Add to Cart</button>
+                            <button onclick="displayPlantCart('${plant.name}', '${plant.price}')" class="btn btn-wide bg-[#15803D] text-white rounded-[50px]">Add to Cart</button>
                     </div>
                 </div>
         `
@@ -75,7 +75,7 @@ const displayCategoryTree = (categoryTrees) => {
         const categoryAllTree = document.createElement("div")
         categoryAllTree.innerHTML = `
                     <div class="w-[98%] h-full bg-white pt-0.5 pb-4 rounded-lg">
-                        <div class="w-[90%] h-[170px] mx-auto my-4">
+                        <div onclick="loadPlantDetails(${categoryTree.id})" class="w-[90%] h-[170px] mx-auto my-4">
                             <img class="w-full h-full rounded-lg object-cover" src="${categoryTree.image}" alt="" />
                         </div>
                         <div class="px-4">
@@ -93,7 +93,7 @@ const displayCategoryTree = (categoryTrees) => {
                                 </button>
                                 <p class="text-sm font-semibold"> ৳${categoryTree.price}</p>
                             </div>
-                                <button class="btn btn-wide bg-[#15803D] text-white rounded-[50px]">Add to Cart</button>
+                                <button onclick="displayPlantCart('${categoryTree.name}', '${categoryTree.price}')" class="btn btn-wide bg-[#15803D] text-white rounded-[50px]">Add to Cart</button>
                         </div>
                     </div>
         `
@@ -101,7 +101,6 @@ const displayCategoryTree = (categoryTrees) => {
     })
     
 }
-
 
 const loadPlantDetails = (id) => {
     fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
@@ -129,3 +128,18 @@ const displayPlantDetails = (plant) => {
     detailsContainer.append(details)
 }
 
+const displayPlantCart = (name, price) => {
+    const cartDetailContainer = document.getElementById("cart-detail-container")
+
+    const newCart = document.createElement("div")
+    newCart.innerHTML = `
+            <div class="flex justify-between items-center bg-[#F0FDF4] p-2">
+                <div>
+                  <h5 class="text-sm text-[#1F2937] font-medium">${name}</h5>
+                  <p class="text-sm text-[#8C8C8C]">৳ ${price}</p>
+                </div>
+                <i class="fa-solid fa-xmark cursor-pointer"></i>
+            </div>
+    `
+    cartDetailContainer.append(newCart)
+}
