@@ -1,4 +1,16 @@
+const manageSpinner = (status) => {
+    if (status == true) {
+        document.getElementById("spinner").classList.remove("hidden");
+        document.getElementById("tree-container").classList.add("hidden")
+    }
+    else{
+        document.getElementById("spinner").classList.add("hidden");
+        document.getElementById("tree-container").classList.remove("hidden")
+    }
+}
+
 const loadTreeCategory = () => {
+    manageSpinner(true)
     fetch("https://openapi.programming-hero.com/api/categories")
         .then((res) => res.json())
         .then((data) => displayTreeCategory(data.categories))
@@ -24,7 +36,7 @@ const loadAllTree = () => {
 }
 
 const displayAllTree = (plants) => {
-    
+
     const treeContainer = document.getElementById("tree-container")
     treeContainer.innerHTML = "";
 
@@ -56,14 +68,15 @@ const displayAllTree = (plants) => {
         `
         treeContainer.append(newTree)
     })
+    manageSpinner(false)
 }
 
 loadAllTree()
 
 const categoryTree = (id) => {
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
-     .then((res) => res.json())
-     .then((data) => displayCategoryTree(data.plants))
+        .then((res) => res.json())
+        .then((data) => displayCategoryTree(data.plants))
 }
 
 const displayCategoryTree = (categoryTrees) => {
@@ -99,13 +112,13 @@ const displayCategoryTree = (categoryTrees) => {
         `
         categoryTreeContainer.append(categoryAllTree)
     })
-    
+
 }
 
 const loadPlantDetails = (id) => {
     fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
-     .then((res) => res.json())
-     .then((data) => displayPlantDetails(data.plants))
+        .then((res) => res.json())
+        .then((data) => displayPlantDetails(data.plants))
 }
 
 const displayPlantDetails = (plant) => {
@@ -128,7 +141,7 @@ const displayPlantDetails = (plant) => {
     detailsContainer.append(details)
 }
 
-let sum = 0 ;
+let sum = 0;
 
 const displayPlantCart = (name, price) => {
     const cartDetailContainer = document.getElementById("cart-detail-container")
@@ -141,7 +154,7 @@ const displayPlantCart = (name, price) => {
                     <h5 class="text-sm text-[#1F2937] font-medium">${name}</h5>
                     <p class="text-sm text-[#8C8C8C]">৳ ${price}</p>
                     </div>
-                    <i onclick="removeItem(this)" class="fa-solid fa-xmark cursor-pointer"></i>
+                    <i onclick="removeItem(${price}, this)" class="fa-solid fa-xmark cursor-pointer"></i>
                 </div>
             </div>
     `
@@ -150,7 +163,7 @@ const displayPlantCart = (name, price) => {
     const displayTotalPrice = document.getElementById("total-price-count")
     displayTotalPrice.innerHTML = "";
 
-    sum = sum + parseInt(price)
+    sum = sum + parseInt(price);
 
     const totalPrice = document.createElement("div")
     totalPrice.innerHTML = `
@@ -160,11 +173,25 @@ const displayPlantCart = (name, price) => {
             </div>
     `
     displayTotalPrice.append(totalPrice)
+    
 }
 
-const removeItem = (item) => {
+const removeItem = (price, item) => {
     const parentItem = item.closest("#cart-item")
-    if(parentItem){
-        parentItem.innerHTML = ""
+    if (parentItem) {
+        parentItem.innerHTML = "";
+
+        const displayTotalPrice = document.getElementById("total-price-count")
+        displayTotalPrice.innerHTML = ""
+        sum = sum - price;
+
+        const totalPrice = document.createElement("div")
+        totalPrice.innerHTML = `
+                <div class="flex justify-between items-center border-t-2 border-gray-100 mt-2 pt-2">
+                    <p>Total:</p>
+                    <p>৳ ${sum}</p>
+                </div>
+        `
+        displayTotalPrice.append(totalPrice)
     }
 }
