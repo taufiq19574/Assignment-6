@@ -51,7 +51,7 @@ const displayAllTree = (plants) => {
                     <div onclick="loadPlantDetails(${plant.id})" class="w-[90%] h-[170px] mx-auto my-4">
                         <img class="w-full h-full rounded-lg object-cover" src="${plant.image}" alt="" />
                     </div>
-                    <div class="px-4">
+                    <div class="px-2 lg:px-4">
                         <div class="h-[130px]">
                             <h4 class="text-sm text-[#1F2937] font-semibold pb-2">${plant.name}</h4>
                             <p class="text-[12px] text-[#71717A] pb-3">
@@ -169,8 +169,8 @@ const displayPlantCart = (name, price) => {
             <div id="cart-item">
                 <div class="flex justify-between items-center bg-[#F0FDF4] p-2">
                     <div>
-                    <h5 class="text-sm text-[#1F2937] font-medium">${name}</h5>
-                    <p class="text-sm text-[#8C8C8C]">৳ ${price}</p>
+                    <h5 class="text-xs lg:text-sm text-[#1F2937] font-medium">${name}</h5>
+                    <p class="text-xs lg:text-sm text-[#8C8C8C]">৳ ${price}</p>
                     </div>
                     <i onclick="removeItem(${price}, this)" class="fa-solid fa-xmark cursor-pointer"></i>
                 </div>
@@ -186,8 +186,8 @@ const displayPlantCart = (name, price) => {
     const totalPrice = document.createElement("div")
     totalPrice.innerHTML = `
             <div class="flex justify-between items-center border-t-2 border-gray-100 mt-2 pt-2">
-                <p>Total:</p>
-                <p>৳ ${sum}</p>
+                <p class="text-sm">Total:</p>
+                <p class="text-sm">৳ ${sum}</p>
             </div>
     `
     displayTotalPrice.append(totalPrice)

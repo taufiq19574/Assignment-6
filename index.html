@@ -112,25 +112,27 @@
           <span class="loading loading-bars loading-xl"></span>
         </section>
 
-        <div class="flex justify-between mt-5">
+        <div class="flex flex-wrap justify-between mt-5">
           <!-- Category div -->
-          <div id="categories-container" class="w-[15%]">
+          <div class="w-[100%] lg:w-[15%]">
             <h3 class="text-xl font-semibold pb-3">Categories</h3>
-            <button
-              id="all-tree-btn" onclick="loadAllTree()" class="text-[#1F2937] hover:bg-[#15803D] hover:text-white rounded-sm w-full text-start p-2"
-            >
-              All Trees
-            </button>
+            <div id="categories-container">
+              <button
+              id="all-tree-btn" onclick="loadAllTree()" class="text-[#1F2937] hover:bg-[#15803D] hover:text-white rounded-sm w-full text-center lg:text-start p-2"
+              >
+                All Trees
+              </button>
+            </div>
           </div>
 
           <!-- all tress div -->
-          <div id="tree-container" class="w-[68%] grid grid-cols-3 gap-2 space-y-4">
+          <div id="tree-container" class="w-[70%] lg:w-[68%] lg:grid grid-cols-3 gap-2 space-y-4">
           </div>
 
           <!-- cart div -->
-          <div class="w-[15%] h-[500px] bg-white rounded-lg">
-            <div class="p-3 space-y-2">
-              <h2 class="text-lg font-semibold">Your Cart</h2>
+          <div class="w-[29%] lg:w-[15%] h-[500px] bg-white rounded-lg">
+            <div class="p-1 lg:p-3 space-y-2">
+              <h2 class="text-base lg:text-lg text-center font-semibold">Your Cart</h2>
               
               <div id="cart-detail-container" class="space-y-2"></div>
 
